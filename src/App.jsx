@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import './App.css'
-import NewToDoForm from './NewToDoForm';
-import ToDoList from './ToDoList';
+import NewToDoForm from './components/NewToDoForm/NewToDoForm';
+import ToDoList from './components/ToDoList/ToDoList';
+import classes from './App.module.css';
 
 const App = () => {
   const [toDos, setToDos] = useState(() => {
     const localValue = localStorage.getItem("ITEMS")
-    if(localValue == null) return []
+    if (localValue == null) return []
 
     return JSON.parse(localValue)
   });
@@ -42,13 +42,13 @@ const App = () => {
   }
 
   return (
-    <section className='container'>
+    <section >
       <NewToDoForm onSubmit={addToDo} />
-      <h2 className='header'>To Do List</h2>
-      <ToDoList 
-      toDos = {toDos} 
-      toggleToDo = {toggleToDo} 
-      deleteToDo = {deleteToDo}
+      <h2 className={classes['header']}>To Do List</h2>
+      <ToDoList
+        toDos={toDos}
+        toggleToDo={toggleToDo}
+        deleteToDo={deleteToDo}
       />
     </section>
   )

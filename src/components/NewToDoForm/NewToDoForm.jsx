@@ -1,8 +1,7 @@
 import { useState } from "react";
-import './app.css';
+import classes from './NewToDoForm.module.css';
 
 const NewToDoForm = ({onSubmit}) => {
-	// props.onSubmit; // why this line ???????????
 	const [newItem, setNewItem] = useState("");
 
 	const submitHandler = (event) => {
@@ -15,8 +14,8 @@ const NewToDoForm = ({onSubmit}) => {
 	};
 
 	return (
-		<form onSubmit={submitHandler} className="new-item-form">
-			<div className="form-row">
+		<form onSubmit={submitHandler} className={classes["new-item-form"]}>
+			<div className={classes["form-row"]}>
 				<label htmlFor="item">New Item</label>
 				<input
 					value={newItem}
@@ -26,7 +25,7 @@ const NewToDoForm = ({onSubmit}) => {
 				/>
 			</div>
 
-			<button className="btn">Add</button>
+			<button className={classes["btn"]}>Add</button>
 		</form>
 	);
 };
